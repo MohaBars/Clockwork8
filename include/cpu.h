@@ -1,12 +1,16 @@
 #pragma once
+#include <cstdint>
 
-#include <cwctype>
-#include <stdint.h>
+class Bus;
+
 
 class CPU {
+
   public:
       CPU();
-      ~CPU() = default;
+      ~CPU();
+
+      void connectBus(Bus *ptr) { bus = ptr; }
   private:
-      Bus *bus;
+      Bus *bus = nullptr;
 };

@@ -1,6 +1,6 @@
 #pragma once
 #include <cstdint>
-#include <stdint.h>
+#include "CPU.h"
 
 class Bus {
 
@@ -8,8 +8,11 @@ class Bus {
       Bus();
       ~Bus() = default;
 
-      uint16_t read(uint16_t addr);
-      uint8_t write(uint16_t addr, uint16_t data);
+      CPU cpu;
+
+      uint8_t read(uint16_t addr, bool flag = false);
+      void write(uint16_t addr, uint8_t data);
+
   private:
       static constexpr uint16_t RAM_SIZE = 0x0800;  // 2 KB
       uint8_t ram[RAM_SIZE];
